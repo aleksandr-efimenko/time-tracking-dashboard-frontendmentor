@@ -1,0 +1,33 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Activity {
+  id         Int         @id @default(autoincrement())
+  title      String
+  timeframes Timeframe[]
+}
+
+model Timeframe {
+  id             Int          @id @default(autoincrement())
+  activityType   ActivityType @relation(fields: [activityTypeId], references: [id])
+  activityTypeId Int
+  current        Int
+  previous       Int
+  activity       Activity     @relation(fields: [activityId], references: [id])
+  activityId     Int
+}
+
+model ActivityType {
+  id         Int         @id @default(autoincrement())
+  type       String
+  timeframes Timeframe[]
+}
