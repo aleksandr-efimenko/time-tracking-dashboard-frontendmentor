@@ -1,0 +1,47 @@
+.main-card-container {
+  padding: 3.7rem 3.2rem;
+}
+
+.card-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.card-header {
+  width: 100%;
+}
+
+.card-body {
+  background-color: var(--dark-blue);
+  padding: 2.9rem 3rem 3.2rem;
+  color: hsv(0, 0%, 100%);
+}
+
+.blue {
+  background-color: var(--blue);
+}
+
+.light-orange {
+  background-color: var(--light-orange);
+}
+
+.soft-blue {
+  background-color: var(--soft-blue);
+}
+
+.light-red {
+  background-color: var(--light-red);
+}
+
+.lime-green {
+  background-color: var(--lime-green);
+}
+
+.violet {
+  background-color: var(--violet);
+}
+
+.soft-orange {
+  background-color: var(--soft-orange);
+}
