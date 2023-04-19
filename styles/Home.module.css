@@ -6,6 +6,9 @@
   grid-template-areas:
     "main-card work play study"
     "main-card exercise social sefl-care";
+  grid-auto-flow: row;
+  grid-auto-columns: 25.5rem;
+  grid-auto-rows: 24.4rem;
 }
 
 .main-card {

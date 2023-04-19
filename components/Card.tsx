@@ -9,6 +9,7 @@ export default function Card({
   title,
   current,
   previous,
+  units,
   color,
   icon,
   link,
@@ -17,24 +18,35 @@ export default function Card({
   title: string;
   current: number;
   previous: number;
+  units: "hrs" | "mins";
   color: string;
   icon: string;
   link: string;
 }) {
   return (
-    <div className={`card-container ${cardName}`}>
-      <div className={`${cardStyle['card-header']} ${cardStyle[color]}`}>
-        <Image src={icon} alt="icon" width={78} height={78} />
-      </div>
+    <div
+      className={`${cardStyle["card-container"]} ${cardName} ${cardStyle[color]}`}
+    >
+      <Image src={icon} alt="icon" width={78} height={78} />
+
       <div className={`${cardStyle["card-body"]}`}>
-        <div className="">
+        <div className={cardStyle["card-body-header-container"]}>
           <h2>{title}</h2>
           <Link href={link}>
-            <Image src={iconElipsis} width={18} height={5} alt='three dots icon' />
+            <Image
+              src={iconElipsis}
+              width={18}
+              height={5}
+              alt="three dots icon"
+            />
           </Link>
         </div>
-        <p>{current}</p>
-        <p>Last Week - {previous}</p>
+        <p className={cardStyle["current-value"]}>
+          {current} {units}
+        </p>
+        <p className={cardStyle["previous-value"]}>
+          Last Week - {previous} {units}
+        </p>
       </div>
     </div>
   );

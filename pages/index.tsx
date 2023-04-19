@@ -12,6 +12,7 @@ export type CardType = {
   title: string;
   current: number;
   previous: number;
+  units: "hrs" | "mins";
   color: string;
   icon: string;
   link: string;
@@ -23,6 +24,7 @@ const cards: CardType[] = [
     title: "Work",
     current: 32,
     previous: 36,
+    units: "hrs",
     color: "light-orange",
     icon: "/images/icon-work.svg",
     link: "/work",
@@ -32,6 +34,7 @@ const cards: CardType[] = [
     title: "Play",
     current: 10,
     previous: 12,
+    units: "hrs",
     color: "soft-blue",
     icon: "/images/icon-play.svg",
     link: "/play",
@@ -41,6 +44,7 @@ const cards: CardType[] = [
     title: "Study",
     current: 4,
     previous: 7,
+    units: "hrs",
     color: "light-red",
     icon: "/images/icon-study.svg",
     link: "/study",
@@ -50,6 +54,7 @@ const cards: CardType[] = [
     title: "Exercise",
     current: 4,
     previous: 5,
+    units: "hrs",
     color: "lime-green",
     icon: "/images/icon-exercise.svg",
     link: "/exercise",
@@ -59,6 +64,7 @@ const cards: CardType[] = [
     title: "Social",
     current: 1,
     previous: 3,
+    units: "hrs",
     color: "violet",
     icon: "/images/icon-social.svg",
     link: "/social",
@@ -68,6 +74,7 @@ const cards: CardType[] = [
     title: "Self Care",
     current: 0,
     previous: 1,
+    units: "hrs",
     color: "soft-orange",
     icon: "/images/icon-self-care.svg",
     link: "/self-care",
@@ -105,6 +112,7 @@ export default function Home() {
               title={card.title}
               current={card.current}
               previous={card.previous}
+              units={card.units}
               color={card.color}
               icon={card.icon}
               link={card.link}
