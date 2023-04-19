@@ -22,9 +22,11 @@ export default function MainCard({
       className={`${cardStyle["main-card-container"]} ${pageStyles[cardName]}`}
     >
       <div className={`${cardStyle["main-card-header"]} ${cardStyle[color]}`}>
-        <Image src={avatarSrc} alt="avatar" width={78} height={78} />
-        <p>Report for</p>
-        <h1 className={cardStyle['main-card-container-header']}>{userName}</h1>
+        <Image className={cardStyle['avatar-container']} src={avatarSrc} alt="avatar" width={78} height={78} />
+        <div className={cardStyle['main-card-text-block']}>
+          <p>Report for</p>
+          <h1 className={cardStyle["main-card-container-header"]}>{userName}</h1>
+        </div>
       </div>
       <div className={cardStyle["main-card-body"]}>
         {periods.map((period) => (
