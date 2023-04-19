@@ -38,7 +38,7 @@
   line-height: var(--lh-mini);
 }
 
-.main-card-body a:hover{
+.main-card-body a:hover {
   color: hsl(0, 0%, 100%);
 }
 
@@ -50,7 +50,7 @@
 .main-card-text-block {
   display: flex;
   flex-direction: column;
-  gap: .3rem;
+  gap: 0.3rem;
   margin-block: 4.3rem 4.8rem;
 }
 
@@ -59,6 +59,21 @@
   height: 100%;
   border-radius: var(--border-radius);
   position: relative;
+  z-index: 10;
+}
+
+.card-header {
+  width: 100%;
+  display: flex;
+  flex-direction: row-reverse;
+  position: absolute;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+
+.activity-icon {
+  position: relative;
+  top: -0.5rem;
 }
 
 .card-body {
@@ -67,10 +82,10 @@
   color: hsl(0, 0%, 100%);
   border-radius: var(--border-radius);
   position: absolute;
-  width: 100%;
   bottom: 0;
-  left: 0;
-  right: 0;
+  width: 100%;
+
+  z-index: 20;
 }
 
 .card-body:hover {
@@ -88,7 +103,7 @@
   font-size: var(--fs-mega);
   line-height: var(--lh-mega);
   font-weight: var(--fw-thin);
-  margin-block: 2.4rem .8rem;
+  margin-block: 2.4rem 0.8rem;
 }
 
 .previous-value {

@@ -24,11 +24,12 @@ export default function Card({
   link: string;
 }) {
   return (
-    <div
-      className={`${cardStyle["card-container"]} ${cardName} ${cardStyle[color]}`}
-    >
-      <Image src={icon} alt="icon" width={78} height={78} />
-
+    <div className={`${cardStyle["card-container"]} ${cardName} `}>
+      <div className={`${cardStyle["card-header"]} ${cardStyle[color]}`}>
+        <div className={cardStyle['activity-icon']}>
+          <Image  src={icon} alt="icon" width={78} height={78} />
+        </div>
+      </div>
       <div className={`${cardStyle["card-body"]}`}>
         <div className={cardStyle["card-body-header-container"]}>
           <h2>{title}</h2>
