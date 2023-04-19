@@ -22,11 +22,11 @@ export default function Card({
   link: string;
 }) {
   return (
-    <div className={`rounded card-container ${cardName}`}>
-      <div className={`${cardStyle['card-header']} ${cardStyle[color]} rounded`}>
+    <div className={`card-container ${cardName}`}>
+      <div className={`${cardStyle['card-header']} ${cardStyle[color]}`}>
         <Image src={icon} alt="icon" width={78} height={78} />
       </div>
-      <div className={`${cardStyle["card-body"]} rounded`}>
+      <div className={`${cardStyle["card-body"]}`}>
         <div className="">
           <h2>{title}</h2>
           <Link href={link}>

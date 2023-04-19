@@ -3,7 +3,6 @@ import Image from "next/image";
 import { Rubik } from "next/font/google";
 import styles from "@/styles/Home.module.css";
 import Card from "@/components/Card";
-import { type } from "os";
 import MainCard from "@/components/MainCard";
 
 const rubik = Rubik({ subsets: ["latin"], weight: ["300", "400", "500"] });

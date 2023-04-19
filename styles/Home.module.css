@@ -1,7 +1,7 @@
 .card-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(25.5rem, 1fr));
-  grid-template-rows: repeat(2, minmax(24.4rem, 1fr));
+  grid-template-columns: repeat(4, 25.5rem);
+  grid-template-rows: repeat(2, 24.4rem);
   grid-gap: 3rem;
   grid-template-areas:
     "main-card work play study"
