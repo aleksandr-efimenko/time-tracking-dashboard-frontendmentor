@@ -2,8 +2,85 @@ import Head from "next/head";
 import Image from "next/image";
 import { Rubik } from "next/font/google";
 import styles from "@/styles/Home.module.css";
+import Card from "@/components/Card";
+import { type } from "os";
+import MainCard from "@/components/MainCard";
 
-const rubil = Rubik({ subsets: ["latin"], weight: ["300", "400", "500"] });
+const rubik = Rubik({ subsets: ["latin"], weight: ["300", "400", "500"] });
+
+export type CardType = {
+  cardName: string;
+  title: string;
+  current: number;
+  previous: number;
+  color: string;
+  icon: string;
+  link: string;
+};
+
+const cards: CardType[] = [
+  {
+    cardName: "work",
+    title: "Work",
+    current: 32,
+    previous: 36,
+    color: "light-orange",
+    icon: "/images/icon-work.svg",
+    link: "/work",
+  },
+  {
+    cardName: "play",
+    title: "Play",
+    current: 10,
+    previous: 12,
+    color: "soft-blue",
+    icon: "/images/icon-play.svg",
+    link: "/play",
+  },
+  {
+    cardName: "study",
+    title: "Study",
+    current: 4,
+    previous: 7,
+    color: "light-red",
+    icon: "/images/icon-study.svg",
+    link: "/study",
+  },
+  {
+    cardName: "exercise",
+    title: "Exercise",
+    current: 4,
+    previous: 5,
+    color: "lime-green",
+    icon: "/images/icon-exercise.svg",
+    link: "/exercise",
+  },
+  {
+    cardName: "social",
+    title: "Social",
+    current: 1,
+    previous: 3,
+    color: "violet",
+    icon: "/images/icon-social.svg",
+    link: "/social",
+  },
+  {
+    cardName: "self-care",
+    title: "Self Care",
+    current: 0,
+    previous: 1,
+    color: "soft-orange",
+    icon: "/images/icon-self-care.svg",
+    link: "/self-care",
+  },
+];
+
+const mainInfo = {
+  userName: "Jeremy Robson",
+  cardName: "main-card",
+  color: "blue",
+  avatarSrc: "/images/image-jeremy.png",
+};
 
 export default function Home() {
   return (
@@ -14,8 +91,27 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main>
-        
+      <main className={`${rubik.className} centered`}>
+        <div className={styles["card-grid"]}>
+          <MainCard
+            userName={mainInfo.userName}
+            cardName={mainInfo.cardName}
+            color={mainInfo.color}
+            avatarSrc={mainInfo.avatarSrc}
+          />
+          {cards.map((card) => (
+            <Card
+              key={card.cardName}
+              cardName={card.cardName}
+              title={card.title}
+              current={card.current}
+              previous={card.previous}
+              color={card.color}
+              icon={card.icon}
+              link={card.link}
+            />
+          ))}
+        </div>
       </main>
     </>
   );

@@ -1,6 +1,6 @@
 :root {
   --blue: hsl(246, 80%, 60%);
-  --light-red: hsl(15, 100%, 70%);
+  --light-orange: hsl(15, 100%, 70%);
   --soft-blue: hsl(195, 74%, 62%);
   --light-red: hsl(348, 100%, 68%);
   --lime-green: hsl(145, 58%, 55%);
@@ -13,5 +13,25 @@
   --pale-blue: hsl(236, 100%, 87%);
 
   font-size: 10px;
-  
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--very-dark-blue);
+}
+main {
+  height: 100vh;
+}
+.centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.rounded {
+  border-radius: 1.5rem;
 }
