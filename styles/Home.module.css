@@ -1,0 +1,37 @@
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(25.5rem, 1fr));
+  grid-template-rows: repeat(2, minmax(24.4rem, 1fr));
+  grid-gap: 3rem;
+  grid-template-areas:
+    "main-card work play study"
+    "main-card exercise social sefl-care";
+}
+
+.main-card {
+  grid-area: main-card;
+}
+
+.work {
+  grid-area: work;
+}
+
+.play {
+  grid-area: play;
+}
+
+.study {
+  grid-area: study;
+}
+
+.exercise {
+  grid-area: exercise;
+}
+
+.social {
+  grid-area: social;
+}
+
+.self-care {
+  grid-area: self-care;
+}
