@@ -1,4 +1,7 @@
 :root {
+  font-size: 10px;
+
+  /* colors */
   --blue: hsl(246, 80%, 60%);
   --light-orange: hsl(15, 100%, 70%);
   --soft-blue: hsl(195, 74%, 62%);
@@ -12,7 +15,31 @@
   --desaturated-blue: hsl(235, 45%, 61%);
   --pale-blue: hsl(236, 100%, 87%);
 
-  font-size: 10px;
+  /* font weights */
+  --fw-medium: 500;
+  --fw-light: 400;
+  --fw-thin: 300;
+
+  /* font sizes */
+  --fs-mega-d: 5.6rem;
+  --fs-mega-m: 3.2rem;
+  --fs-mega: var(--fs-mega-d);
+  --lh-mega-d: 6.6rem;
+  --lh-mega-m: 3.8rem;
+  --lh-mega: var(--lh-mega-d);
+
+  --fs-kilo-d: 4rem;
+  --fs-kilo-m: 2.4rem;
+  --fs-kilo: var(--fs-kilo-d);
+  --lh-kilo-d: 4.7rem;
+  --lh-kilo-m: 2.8rem;
+  --lh-kilo: var(--lh-kilo-d);
+
+  --fs-mili: 1.8rem;
+  --lh-mili: 2.1rem;
+
+  --fs-micro: 1.5rem;
+  --lh-micro: 1.8rem;
 }
 
 * {
@@ -34,4 +61,13 @@ main {
 }
 .rounded {
   border-radius: 1.5rem;
+}
+
+@media (max-width: 600px) {
+  :root {
+    --fs-mega: var(--fs-mega-m);
+    --lh-mega: var(--lh-mega-m);
+    --fs-kilo: var(--fs-kilo-m);
+    --lh-kilo: var(--lh-kilo-m);
+  }
 }
