@@ -1,8 +1,8 @@
 import React from "react";
-import cardStyle from "@/styles/Card.module.css";
 import pageStyles from "@/styles/Home.module.css";
 import Image from "next/image";
 import Link from "next/link";
+import mainCardStyles from "@/styles/MainCard.module.css";
 
 const periods = ["Daily", "Weekly", "Monthly"];
 
@@ -19,16 +19,16 @@ export default function MainCard({
 }) {
   return (
     <div
-      className={`${cardStyle["main-card-container"]} ${pageStyles[cardName]}`}
+      className={`${mainCardStyles["main-card-container"]} ${pageStyles[cardName]}`}
     >
-      <div className={`${cardStyle["main-card-header"]} ${cardStyle[color]}`}>
-        <Image className={cardStyle['avatar-container']} src={avatarSrc} alt="avatar" width={78} height={78} />
-        <div className={cardStyle['main-card-text-block']}>
+      <div className={`${mainCardStyles["main-card-header"]} ${mainCardStyles[color]}`}>
+        <Image className={mainCardStyles['avatar-container']} src={avatarSrc} alt="avatar" width={78} height={78} />
+        <div className={mainCardStyles['main-card-text-block']}>
           <p>Report for</p>
-          <h1 className={cardStyle["main-card-container-header"]}>{userName}</h1>
+          <h1 className={mainCardStyles["main-card-container-header"]}>{userName}</h1>
         </div>
       </div>
-      <div className={cardStyle["main-card-body"]}>
+      <div className={mainCardStyles["main-card-body"]}>
         {periods.map((period) => (
           <Link key={period} href="#">
             {period}
