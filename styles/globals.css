@@ -57,7 +57,7 @@ body {
 }
 
 main {
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .centered {
@@ -66,11 +66,15 @@ main {
   align-items: center;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 800px) {
   :root {
     --fs-mega: var(--fs-mega-m);
     --lh-mega: var(--lh-mega-m);
     --fs-kilo: var(--fs-kilo-m);
     --lh-kilo: var(--lh-kilo-m);
+  }
+
+  .centered {
+    align-items: flex-start;
   }
 }

@@ -1,59 +1,3 @@
-.main-card-container {
-  background-color: var(--dark-blue);
-  color: hsl(0, 0%, 100%);
-  border-radius: var(--border-radius);
-}
-
-.main-card-container p {
-  font-size: var(--fs-micro);
-  line-height: var(--lh-micro);
-  font-weight: var(--fw-light);
-  color: var(--pale-blue);
-}
-
-.main-card-container h1 {
-  font-size: var(--fs-kilo);
-  line-height: var(--lh-kilo);
-  font-weight: var(--fw-thin);
-}
-.main-card-header {
-  padding: 3.7rem 3.2rem;
-  border-radius: var(--border-radius);
-}
-
-.main-card-body {
-  padding: 2.6rem 3.2rem 3.2rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 2.1rem;
-  position: relative;
-  bottom: 0;
-}
-
-.main-card-body a {
-  color: var(--desaturated-blue);
-  text-decoration: none;
-  font-size: var(--fs-mini);
-  line-height: var(--lh-mini);
-}
-
-.main-card-body a:hover {
-  color: hsl(0, 0%, 100%);
-}
-
-.avatar-container {
-  border-radius: 50%;
-  border: solid 0.3rem hsl(0, 0%, 100%);
-}
-
-.main-card-text-block {
-  display: flex;
-  flex-direction: column;
-  gap: 0.3rem;
-  margin-block: 4.3rem 4.8rem;
-}
-
 .card-container {
   width: 100%;
   height: 100%;
@@ -74,6 +18,7 @@
 .activity-icon {
   position: relative;
   top: -0.5rem;
+  margin-inline: 1.5rem;
 }
 
 .card-body {
@@ -84,7 +29,6 @@
   position: absolute;
   bottom: 0;
   width: 100%;
-
   z-index: 20;
 }
 
@@ -99,11 +43,17 @@
   align-items: center;
 }
 
+.values-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin-block-start: 2.4rem;
+}
+
 .current-value {
   font-size: var(--fs-mega);
   line-height: var(--lh-mega);
   font-weight: var(--fw-thin);
-  margin-block: 2.4rem 0.8rem;
 }
 
 .previous-value {
@@ -114,9 +64,6 @@
 }
 
 /*  container colors */
-.blue {
-  background-color: var(--blue);
-}
 
 .light-orange {
   background-color: var(--light-orange);
@@ -140,4 +87,16 @@
 
 .soft-orange {
   background-color: var(--soft-orange);
+}
+
+@media (max-width: 800px) {
+  .values-container {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-block-start: 0.8rem;
+  }
+  .card-body {
+    padding: 2.8rem 2.4rem;
+  }
 }

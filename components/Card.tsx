@@ -1,5 +1,6 @@
 import React from "react";
 import cardStyle from "@/styles/Card.module.css";
+import pageStyles from "@/styles/Home.module.css";
 import Link from "next/link";
 import Image from "next/image";
 import iconElipsis from "@/public/images/icon-ellipsis.svg";
@@ -24,7 +25,7 @@ export default function Card({
   link: string;
 }) {
   return (
-    <div className={`${cardStyle["card-container"]} ${cardName} `}>
+    <div className={`${cardStyle["card-container"]} ${pageStyles[cardName]} `}>
       <div className={`${cardStyle["card-header"]} ${cardStyle[color]}`}>
         <div className={cardStyle['activity-icon']}>
           <Image  src={icon} alt="icon" width={78} height={78} />
@@ -42,12 +43,14 @@ export default function Card({
             />
           </Link>
         </div>
-        <p className={cardStyle["current-value"]}>
-          {current} {units}
-        </p>
-        <p className={cardStyle["previous-value"]}>
-          Last Week - {previous} {units}
-        </p>
+        <div className={cardStyle['values-container']}>
+          <p className={cardStyle["current-value"]}>
+            {current} {units}
+          </p>
+          <p className={cardStyle["previous-value"]}>
+            Last Week - {previous} {units}
+          </p>
+        </div>
       </div>
     </div>
   );
