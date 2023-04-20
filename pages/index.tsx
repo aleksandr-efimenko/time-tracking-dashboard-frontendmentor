@@ -1,11 +1,11 @@
 import Head from "next/head";
-import Image from "next/image";
 import { Rubik } from "next/font/google";
 import styles from "@/styles/Home.module.css";
 import Card from "@/components/Card";
 import MainCard from "@/components/MainCard";
 import { useEffect, useState } from "react";
-import { Activity } from "./api/profile";
+import { Activity } from "./api/timeTracker";
+import { Profile } from "./api/profile";
 
 const rubik = Rubik({ subsets: ["latin"], weight: ["300", "400", "500"] });
 
@@ -20,35 +20,40 @@ export type CardType = {
   link: string;
 };
 
-const mainInfo = {
-  userName: "Jeremy Robson",
-  cardName: "main-card",
-  color: "blue",
-  avatarSrc: "/images/image-jeremy.png",
-};
-
 export default function Home() {
-  const [data, setData] = useState<Activity[]>([]);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [trackerData, setTrackerData] = useState<Activity[]>([]);
+  const [profileData, setProfileData] = useState<Profile>({} as Profile);
+  const [isLoadingTracker, setIsLoadingTracker] = useState<boolean>(false);
+  const [isLoadingProfile, setIsLoadingProfile] = useState<boolean>(false);
   const [period, setPeriod] = useState<"daily" | "weekly" | "monthly">("daily");
 
   useEffect(() => {
-    setIsLoading(true);
-    fetch("/api/profile")
+    setIsLoadingTracker(true);
+    fetch("/api/timeTracker")
       .then((res) => res.json())
       .then((data) => {
-        setData(data);
-        setIsLoading(false);
+        setTrackerData(data);
+        setIsLoadingTracker(false);
       })
       .catch((err) => {
         console.log(err);
-        setIsLoading(false);
+        setIsLoadingTracker(false);
       });
   }, []);
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
+  useEffect (() => {
+    setIsLoadingProfile(true);
+    fetch("/api/profile")
+      .then((res) => res.json())
+      .then((data) => {
+        setProfileData(data);
+        setIsLoadingProfile(false);
+      })
+      .catch((err) => {
+        console.log(err);
+        setIsLoadingProfile(false);
+      });
+  }, []);
 
   return (
     <>
@@ -61,14 +66,14 @@ export default function Home() {
       <main className={`${rubik.className} centered`}>
         <div className={styles["card-grid"]}>
           <MainCard
-            userName={mainInfo.userName}
-            cardName={mainInfo.cardName}
-            color={mainInfo.color}
-            avatarSrc={mainInfo.avatarSrc}
+            userName={profileData.userName}
+            cardName='main-card'
+            color={profileData.color}
+            avatarSrc={profileData.avatarSrc}
             selectedPeriod={period}
             setSelectedPeriod={setPeriod}
           />
-          {data.map((card) => (
+          {trackerData.map((card) => (
             <Card
               key={card.title}
               cardName={card.title.replace(' ', '').toLowerCase()}
