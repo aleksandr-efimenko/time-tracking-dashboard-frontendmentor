@@ -22,10 +22,14 @@ export default function MainCard({
       className={`${mainCardStyles["main-card-container"]} ${pageStyles[cardName]}`}
     >
       <div className={`${mainCardStyles["main-card-header"]} ${mainCardStyles[color]}`}>
-        <Image className={mainCardStyles['avatar-container']} src={avatarSrc} alt="avatar" width={78} height={78} />
-        <div className={mainCardStyles['main-card-text-block']}>
-          <p>Report for</p>
-          <h1 className={mainCardStyles["main-card-container-header"]}>{userName}</h1>
+        <div className={mainCardStyles['user-info-container']}>
+          <div className={mainCardStyles['avatar-container']}>
+            <Image  src={avatarSrc} alt="avatar" fill />
+          </div>
+          <div className={mainCardStyles['user-info-text']}>
+            <p>Report for</p>
+            <h1 className={mainCardStyles["main-card-container-header"]}>{userName}</h1>
+          </div>
         </div>
       </div>
       <div className={mainCardStyles["main-card-body"]}>
