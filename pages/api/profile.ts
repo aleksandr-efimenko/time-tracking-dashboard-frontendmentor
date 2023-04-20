@@ -1,7 +1,9 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 
-interface Activity {
+export interface Activity {
   title: string;
+  color: string;
+  icon: string;
   timeframes: {
     daily: { current: number; previous: number };
     weekly: { current: number; previous: number };
@@ -16,6 +18,8 @@ export default function handler(
   const data = [
     {
       title: "Work",
+      color: "light-orange",
+      icon: "/images/icon-work.svg",
       timeframes: {
         daily: {
           current: 5,
@@ -33,6 +37,8 @@ export default function handler(
     },
     {
       title: "Play",
+      color: "soft-blue",
+      icon: "/images/icon-play.svg",
       timeframes: {
         daily: {
           current: 1,
@@ -50,6 +56,8 @@ export default function handler(
     },
     {
       title: "Study",
+      color: "light-red",
+      icon: "/images/icon-study.svg",
       timeframes: {
         daily: {
           current: 0,
@@ -67,6 +75,8 @@ export default function handler(
     },
     {
       title: "Exercise",
+      color: "lime-green",
+      icon: "/images/icon-exercise.svg",
       timeframes: {
         daily: {
           current: 1,
@@ -84,6 +94,8 @@ export default function handler(
     },
     {
       title: "Social",
+      color: "violet",
+      icon: "/images/icon-social.svg",
       timeframes: {
         daily: {
           current: 1,
@@ -101,6 +113,8 @@ export default function handler(
     },
     {
       title: "Self Care",
+      color: "soft-orange",
+      icon: "/images/icon-self-care.svg",
       timeframes: {
         daily: {
           current: 0,

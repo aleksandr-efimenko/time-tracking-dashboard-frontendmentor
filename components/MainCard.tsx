@@ -4,18 +4,22 @@ import Image from "next/image";
 import Link from "next/link";
 import mainCardStyles from "@/styles/MainCard.module.css";
 
-const periods = ["Daily", "Weekly", "Monthly"];
+const periods = ["daily", "weekly", "monthly"];
 
 export default function MainCard({
   userName,
   cardName,
   avatarSrc,
   color,
+  selectedPeriod,
+  setSelectedPeriod
 }: {
   userName: string;
   cardName: string;
   avatarSrc: string;
   color: string;
+  selectedPeriod: string;
+  setSelectedPeriod: Function;
 }) {
   return (
     <div
@@ -34,7 +38,10 @@ export default function MainCard({
       </div>
       <div className={mainCardStyles["main-card-body"]}>
         {periods.map((period) => (
-          <Link key={period} href="#">
+          <Link 
+          onClick={() => setSelectedPeriod(period)}
+          className={period === selectedPeriod ? mainCardStyles['active-period'] : ''} 
+          key={period} href="#">
             {period}
           </Link>
         ))}

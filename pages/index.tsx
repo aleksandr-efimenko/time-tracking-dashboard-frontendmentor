@@ -4,6 +4,8 @@ import { Rubik } from "next/font/google";
 import styles from "@/styles/Home.module.css";
 import Card from "@/components/Card";
 import MainCard from "@/components/MainCard";
+import { useEffect, useState } from "react";
+import { Activity } from "./api/profile";
 
 const rubik = Rubik({ subsets: ["latin"], weight: ["300", "400", "500"] });
 
@@ -18,69 +20,6 @@ export type CardType = {
   link: string;
 };
 
-const cards: CardType[] = [
-  {
-    cardName: "work",
-    title: "Work",
-    current: 32,
-    previous: 36,
-    units: "hrs",
-    color: "light-orange",
-    icon: "/images/icon-work.svg",
-    link: "/work",
-  },
-  {
-    cardName: "play",
-    title: "Play",
-    current: 10,
-    previous: 12,
-    units: "hrs",
-    color: "soft-blue",
-    icon: "/images/icon-play.svg",
-    link: "/play",
-  },
-  {
-    cardName: "study",
-    title: "Study",
-    current: 4,
-    previous: 7,
-    units: "hrs",
-    color: "light-red",
-    icon: "/images/icon-study.svg",
-    link: "/study",
-  },
-  {
-    cardName: "exercise",
-    title: "Exercise",
-    current: 4,
-    previous: 5,
-    units: "hrs",
-    color: "lime-green",
-    icon: "/images/icon-exercise.svg",
-    link: "/exercise",
-  },
-  {
-    cardName: "social",
-    title: "Social",
-    current: 1,
-    previous: 3,
-    units: "hrs",
-    color: "violet",
-    icon: "/images/icon-social.svg",
-    link: "/social",
-  },
-  {
-    cardName: "self-care",
-    title: "Self Care",
-    current: 0,
-    previous: 1,
-    units: "hrs",
-    color: "soft-orange",
-    icon: "/images/icon-self-care.svg",
-    link: "/self-care",
-  },
-];
-
 const mainInfo = {
   userName: "Jeremy Robson",
   cardName: "main-card",
@@ -89,6 +28,28 @@ const mainInfo = {
 };
 
 export default function Home() {
+  const [data, setData] = useState<Activity[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [period, setPeriod] = useState<"daily" | "weekly" | "monthly">("daily");
+
+  useEffect(() => {
+    setIsLoading(true);
+    fetch("/api/profile")
+      .then((res) => res.json())
+      .then((data) => {
+        setData(data);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+        setIsLoading(false);
+      });
+  }, []);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <>
       <Head>
@@ -104,18 +65,20 @@ export default function Home() {
             cardName={mainInfo.cardName}
             color={mainInfo.color}
             avatarSrc={mainInfo.avatarSrc}
+            selectedPeriod={period}
+            setSelectedPeriod={setPeriod}
           />
-          {cards.map((card) => (
+          {data.map((card) => (
             <Card
-              key={card.cardName}
-              cardName={card.cardName}
+              key={card.title}
+              cardName={card.title.replace(' ', '').toLowerCase()}
               title={card.title}
-              current={card.current}
-              previous={card.previous}
-              units={card.units}
+              current={card.timeframes[period].current}
+              previous={card.timeframes[period].previous}
+              units={'hrs'}
               color={card.color}
               icon={card.icon}
-              link={card.link}
+              link='#'
             />
           ))}
         </div>

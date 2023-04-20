@@ -37,6 +37,11 @@
   text-decoration: none;
   font-size: var(--fs-mini);
   line-height: var(--lh-mini);
+  text-transform: capitalize;
+}
+
+.main-card-body a.active-period {
+  color: hsl(0, 0%, 100%);
 }
 
 .main-card-body a:hover {
