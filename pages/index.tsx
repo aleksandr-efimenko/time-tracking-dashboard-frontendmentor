@@ -5,7 +5,6 @@ import Card from "@/components/Card";
 import MainCard from "@/components/MainCard";
 import { useEffect, useState } from "react";
 import { Activity } from "./api/timeTracker";
-import { Profile } from "./api/profile";
 
 const rubik = Rubik({ subsets: ["latin"], weight: ["300", "400", "500"] });
 
@@ -22,9 +21,7 @@ export type CardType = {
 
 export default function Home() {
   const [trackerData, setTrackerData] = useState<Activity[]>([]);
-  const [profileData, setProfileData] = useState<Profile>({} as Profile);
   const [isLoadingTracker, setIsLoadingTracker] = useState<boolean>(false);
-  const [isLoadingProfile, setIsLoadingProfile] = useState<boolean>(false);
   const [period, setPeriod] = useState<"daily" | "weekly" | "monthly">("daily");
 
   useEffect(() => {
@@ -41,21 +38,9 @@ export default function Home() {
       });
   }, []);
 
-  useEffect (() => {
-    setIsLoadingProfile(true);
-    fetch("/api/profile")
-      .then((res) => res.json())
-      .then((data) => {
-        setProfileData(data);
-        setIsLoadingProfile(false);
-      })
-      .catch((err) => {
-        console.log(err);
-        setIsLoadingProfile(false);
-      });
-  }, []);
 
-  return (
+
+   return (
     <>
       <Head>
         <title>Time tracking dashboard</title>
@@ -66,10 +51,6 @@ export default function Home() {
       <main className={`${rubik.className} centered`}>
         <div className={styles["card-grid"]}>
           <MainCard
-            userName={profileData.userName}
-            cardName='main-card'
-            color={profileData.color}
-            avatarSrc={profileData.avatarSrc}
             selectedPeriod={period}
             setSelectedPeriod={setPeriod}
           />
