@@ -78,3 +78,17 @@ main {
     align-items: flex-start;
   }
 }
+
+.skeleton {
+  opacity: .7;
+  animation: skeleton-loading 1s linear infinite alternate;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-color: hsl(0, 0%, 60%);
+  }
+  100% {
+    background-color: hsl(200, 20%, 95%);
+  }
+}

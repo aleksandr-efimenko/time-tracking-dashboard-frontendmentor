@@ -89,6 +89,7 @@
   background-color: var(--soft-orange);
 }
 
+
 @media (max-width: 800px) {
   .values-container {
     flex-direction: row;
@@ -99,4 +100,22 @@
   .card-body {
     padding: 2.8rem 2.4rem;
   }
+}
+
+.card-title-skeleton {
+  width: 40%;
+  height: 2.4rem;
+  border-radius: 0.4rem;
+}
+
+.card-main-value-skeleton {
+  width: 80%;
+  height: 4.8rem;
+  border-radius: 0.4rem;
+}
+
+.card-additional-value-skeleton {
+  width: 90%;
+  height: 2.4rem;
+  border-radius: 0.4rem;
 }

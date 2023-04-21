@@ -5,6 +5,7 @@ import Card from "@/components/Card";
 import MainCard from "@/components/MainCard";
 import { useEffect, useState } from "react";
 import { Activity } from "./api/timeTracker";
+import CardSkeleton from "@/components/CardSkeleton";
 
 const rubik = Rubik({ subsets: ["latin"], weight: ["300", "400", "500"] });
 
@@ -38,9 +39,7 @@ export default function Home() {
       });
   }, []);
 
-
-
-   return (
+  return (
     <>
       <Head>
         <title>Time tracking dashboard</title>
@@ -50,23 +49,26 @@ export default function Home() {
       </Head>
       <main className={`${rubik.className} centered`}>
         <div className={styles["card-grid"]}>
-          <MainCard
-            selectedPeriod={period}
-            setSelectedPeriod={setPeriod}
-          />
-          {trackerData.map((card) => (
-            <Card
-              key={card.title}
-              cardName={card.title.replace(' ', '').toLowerCase()}
-              title={card.title}
-              current={card.timeframes[period].current}
-              previous={card.timeframes[period].previous}
-              units={'hrs'}
-              color={card.color}
-              icon={card.icon}
-              link='#'
-            />
-          ))}
+          <MainCard selectedPeriod={period} setSelectedPeriod={setPeriod} />
+
+          {isLoadingTracker &&
+            Array(6)
+              .fill(0)
+              .map((i) => <CardSkeleton key={i} />)}
+          {isLoadingTracker ||
+            trackerData.map((card) => (
+              <Card
+                key={card.title}
+                cardName={card.title.replace(" ", "").toLowerCase()}
+                title={card.title}
+                current={card.timeframes[period].current}
+                previous={card.timeframes[period].previous}
+                units={"hrs"}
+                color={card.color}
+                icon={card.icon}
+                link="#"
+              />
+            ))}
         </div>
       </main>
     </>

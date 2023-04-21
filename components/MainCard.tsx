@@ -28,7 +28,6 @@ export default function MainCard({
         console.log(err);
         setIsLoadingProfile(false);
       });
-
   }, []);
 
   if (isLoadingProfile) {
@@ -90,12 +89,18 @@ export function SkeletonMainCard() {
       >
         <div className={mainCardStyles["user-info-container"]}>
           <div className={`${mainCardStyles["avatar-container"]} `}>
-            <div className={`${mainCardStyles["avatar-skeleton"]} ${mainCardStyles["skeleton"]}`} /> 
+            <div className={`${mainCardStyles["avatar-skeleton"]} skeleton`} />
           </div>
           <div className={mainCardStyles["user-info-text"]}>
-            <div className={`${mainCardStyles["user-info-text-skeleton-paragraph"]}  ${mainCardStyles["skeleton"]}`}/>
-            <div className={`${mainCardStyles["user-info-text-skeleton-heading"]}  ${mainCardStyles["skeleton"]}`} />
-            <div className={`${mainCardStyles["user-info-text-skeleton-heading"]}  ${mainCardStyles["skeleton"]}`} />
+            <div
+              className={`${mainCardStyles["user-info-text-skeleton-paragraph"]} skeleton`}
+            />
+            <div
+              className={`${mainCardStyles["user-info-text-skeleton-heading"]} skeleton`}
+            />
+            <div
+              className={`${mainCardStyles["user-info-text-skeleton-heading"]} skeleton`}
+            />
           </div>
         </div>
       </div>
@@ -103,7 +108,7 @@ export function SkeletonMainCard() {
         {periods.map((period) => (
           <div
             key={period}
-            className={`${mainCardStyles["user-info-text-skeleton-paragraph"]}  ${mainCardStyles["skeleton"]} ${mainCardStyles["active-period"]}`}
+            className={`${mainCardStyles["user-info-text-skeleton-paragraph"]} skeleton ${mainCardStyles["active-period"]}`}
           />
         ))}
       </div>
