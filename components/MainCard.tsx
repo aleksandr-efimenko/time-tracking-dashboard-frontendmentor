@@ -18,7 +18,7 @@ export default function MainCard({
   const [isLoadingProfile, setIsLoadingProfile] = useState<boolean>(false);
   useEffect(() => {
     setIsLoadingProfile(true);
-    setTimeout (() => {
+    // setTimeout (() => {
       
     fetch("/api/profile")
       .then((res) => res.json())
@@ -31,7 +31,7 @@ export default function MainCard({
         setIsLoadingProfile(false);
       });
 
-    }, 1000);
+    // }, 1000);
   }, []);
 
   if (isLoadingProfile) {
