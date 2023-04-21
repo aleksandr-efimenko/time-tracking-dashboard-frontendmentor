@@ -15,23 +15,27 @@ export default function MainCard({
   setSelectedPeriod: Function;
 }) {
   const [profileData, setProfileData] = useState<Profile>({} as Profile);
-  const [isLoadingProfile, setIsLoadingProfile] = useState<boolean>(false);
+  const [profileLoadingStatus, setprofileLoadingStatus] = useState<'loading' | 'loaded' | 'error'>('loading');
   useEffect(() => {
-    setIsLoadingProfile(true);
+    setprofileLoadingStatus('loading');
     fetch("/api/profile")
       .then((res) => res.json())
       .then((data) => {
         setProfileData(data);
-        setIsLoadingProfile(false);
+        setprofileLoadingStatus('loaded');
       })
       .catch((err) => {
         console.log(err);
-        setIsLoadingProfile(false);
+        setprofileLoadingStatus('error');
       });
   }, []);
 
-  if (isLoadingProfile) {
+  if (profileLoadingStatus === "loading") {
     return <SkeletonMainCard />;
+  }
+
+  if (profileLoadingStatus === "error") {
+    return <div>Something went wrong</div>;
   }
 
   return (

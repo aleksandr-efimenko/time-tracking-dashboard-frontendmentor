@@ -59,7 +59,7 @@ export default function Home() {
             Array(6)
               .fill(0)
               .map((i) => <CardSkeleton key={i} />)}
-          {trackerLoadingStatus === 'loaded' ||
+          {trackerLoadingStatus === 'loaded' &&
             trackerData.map((card) => (
               <Card
                 key={card.title}
