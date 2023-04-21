@@ -23,7 +23,7 @@ export type CardType = {
 export default function Home() {
   const [trackerData, setTrackerData] = useState<Activity[]>([]);
   const [isLoadingTracker, setIsLoadingTracker] = useState<boolean>(false);
-  const [period, setPeriod] = useState<"daily" | "weekly" | "monthly">("daily");
+  const [period, setPeriod] = useState<"daily" | "weekly" | "monthly">("weekly");
 
   useEffect(() => {
     setIsLoadingTracker(true);
