@@ -22,20 +22,24 @@ export type CardType = {
 
 export default function Home() {
   const [trackerData, setTrackerData] = useState<Activity[]>([]);
-  const [isLoadingTracker, setIsLoadingTracker] = useState<boolean>(false);
-  const [period, setPeriod] = useState<"daily" | "weekly" | "monthly">("weekly");
+  const [trackerLoadingStatus, settrackerLoadingStatus] = useState<
+    "loading" | "loaded" | "error"
+  >("loading");
+  const [period, setPeriod] = useState<"daily" | "weekly" | "monthly">(
+    "weekly"
+  );
 
   useEffect(() => {
-    setIsLoadingTracker(true);
+    settrackerLoadingStatus("loading");
     fetch("/api/timeTracker")
       .then((res) => res.json())
       .then((data) => {
         setTrackerData(data);
-        setIsLoadingTracker(false);
+        settrackerLoadingStatus("loaded");
       })
       .catch((err) => {
         console.log(err);
-        setIsLoadingTracker(false);
+        settrackerLoadingStatus("error");
       });
   }, []);
 
@@ -51,11 +55,11 @@ export default function Home() {
         <div className={styles["card-grid"]}>
           <MainCard selectedPeriod={period} setSelectedPeriod={setPeriod} />
 
-          {isLoadingTracker &&
+          {trackerLoadingStatus === 'loading' &&
             Array(6)
               .fill(0)
               .map((i) => <CardSkeleton key={i} />)}
-          {isLoadingTracker ||
+          {trackerLoadingStatus === 'loaded' ||
             trackerData.map((card) => (
               <Card
                 key={card.title}
@@ -69,6 +73,7 @@ export default function Home() {
                 link="#"
               />
             ))}
+            {trackerLoadingStatus === 'error' && <p>Something went wrong</p>}
         </div>
       </main>
     </>
