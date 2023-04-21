@@ -98,9 +98,6 @@ export function SkeletonMainCard() {
             <div
               className={`${mainCardStyles["user-info-text-skeleton-heading"]} skeleton`}
             />
-            <div
-              className={`${mainCardStyles["user-info-text-skeleton-heading"]} skeleton`}
-            />
           </div>
         </div>
       </div>
