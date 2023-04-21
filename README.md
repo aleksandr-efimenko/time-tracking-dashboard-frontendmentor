@@ -9,3 +9,10 @@ This is a solution to the [Time tracking dashboard challenge on Frontend Mentor]
 - Next.js API Routes
 - TypeScript
 - CSS Modules
+
+### Screenshots
+
+![](./public/design/desktop-design.jpg)
+
+![](./public/design/mobile-design.jpg)
+
