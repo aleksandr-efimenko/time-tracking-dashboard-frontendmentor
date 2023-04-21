@@ -45,7 +45,7 @@ export default function Card({
         </div>
         <div className={cardStyle['values-container']}>
           <p className={cardStyle["current-value"]}>
-            {current} {units}
+            {current}{units}
           </p>
           <p className={cardStyle["previous-value"]}>
             Last Week - {previous} {units}
